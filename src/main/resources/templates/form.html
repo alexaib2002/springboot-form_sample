@@ -7,7 +7,20 @@
 <body>
 <!--th:object refers to the mapped th:field(s) of this template-->
 <form th:action="@{/form}" th:object="${user}" method="post">
-
+    <div>
+        <label for="name">Name</label>
+        <div>
+            <input type="text" id="name" th:field="*{name}">
+        </div>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    </div>
+    <div>
+        <label for="surname">Surname</label>
+        <div>
+            <input type="text" id="surname" th:field="*{surname}">
+        </div>
+        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+    </div>
     <div>
         <label for="username">Username</label>
         <div>
