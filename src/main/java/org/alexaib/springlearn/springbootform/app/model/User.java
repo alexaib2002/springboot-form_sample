@@ -4,9 +4,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 
 public class User {
         private String idx;
+        @RegexOID
         private String oid;
         private String name;
         @NotBlank
