@@ -8,6 +8,13 @@
 <!--th:object refers to the mapped th:field(s) of this template-->
 <form th:action="@{/form}" th:object="${user}" method="post">
     <div>
+        <label for="oid">Other ID</label>
+        <div>
+            <input type="text" id="oid" th:field="*{oid}">
+        </div>
+        <div th:if="${#fields.hasErrors('oid')}" th:errors="*{oid}"></div>
+    </div>
+    <div>
         <label for="name">Name</label>
         <div>
             <input type="text" id="name" th:field="*{name}">

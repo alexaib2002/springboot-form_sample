@@ -2,16 +2,19 @@ package org.alexaib.springlearn.springbootform.app.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class User {
         private String idx;
+        @Pattern(regexp = "[0-9]{2}[.][\\d]{3}-[A-Z]") // \\d value repeats the first [0-9] range
+        private String oid; // Some ID exposed to the user, validates against regex
         @NotEmpty(message = "Name cannot be empty")
-        @Size(min = 3, max = 8)
         private String name;
         @NotEmpty
         private String surname;
         @NotEmpty
+        @Size(min = 3, max = 8)
         private String username;
         @NotEmpty
         private String password;
@@ -34,6 +37,14 @@ public class User {
 
         public void setIdx(String idx) {
                 this.idx = idx;
+        }
+
+        public String getOid() {
+                return oid;
+        }
+
+        public void setOid(String oid) {
+                this.oid = oid;
         }
 
         public String getName() {
