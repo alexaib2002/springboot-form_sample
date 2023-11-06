@@ -5,26 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/form}" method="post">
+<!--th:object refers to the mapped th:field(s) of this template-->
+<form th:action="@{/form}" th:object="${user}" method="post">
 
     <div>
         <label for="username">Username</label>
         <div>
-            <input type="text" name="username" id="username" th:value="${user.username()}">
+            <input type="text" id="username" th:field="*{username}">
         </div>
         <div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>
     </div>
     <div>
         <label for="password">Password</label>
         <div>
-            <input type="password" name="password" id="password">
+            <input type="password" id="password" th:field="*{password}">
         </div>
         <div th:if="${error != null && error.containsKey('password')}" th:text="${error.get('password')}"></div>
     </div>
     <div>
         <label for="email">Email</label>
         <div>
-            <input type="email" name="email" id="email" th:value="${user.email()}">
+            <input type="email" id="email" th:field="*{email}">
         </div>
         <div th:if="${error != null && error.containsKey('email')}" th:text="${error.get('email')}"></div>
     </div>
