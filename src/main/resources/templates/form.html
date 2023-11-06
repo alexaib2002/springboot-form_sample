@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Form</title>
 </head>
 <body>
 <!--th:object refers to the mapped th:field(s) of this template-->
@@ -13,21 +13,21 @@
         <div>
             <input type="text" id="username" th:field="*{username}">
         </div>
-        <div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
     </div>
     <div>
         <label for="password">Password</label>
         <div>
             <input type="password" id="password" th:field="*{password}">
         </div>
-        <div th:if="${error != null && error.containsKey('password')}" th:text="${error.get('password')}"></div>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
     </div>
     <div>
         <label for="email">Email</label>
         <div>
             <input type="email" id="email" th:field="*{email}">
         </div>
-        <div th:if="${error != null && error.containsKey('email')}" th:text="${error.get('email')}"></div>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
     </div>
     <div>
         <input type="submit" value="Submit">
