@@ -2,6 +2,8 @@ package org.alexaib.springlearn.springbootform.app.controllers;
 
 import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.model.User;
+import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.support.SessionStatus;
 @Controller
 @SessionAttributes("user")
 public class FormController {
+
+    @Autowired
+    private UserValidator validator;
 
     @GetMapping("/form")
     public String form(Model model) {
@@ -34,6 +39,7 @@ public class FormController {
      */
     @PostMapping("/form")
     public String processForm(@Valid User user, BindingResult result, Model model, SessionStatus status) {
+        validator.validate(user, result); // explicit validation
         if (result.hasErrors())
             return "form";
         model.addAttribute("user", user);

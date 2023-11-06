@@ -7,9 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class User {
         private String idx;
-        @Pattern(regexp = "[0-9]{2}[.][\\d]{3}-[A-Z]") // \\d value repeats the first [0-9] range
-        private String oid; // Some ID exposed to the user, validates against regex
-        @NotEmpty(message = "Name cannot be empty")
+        private String oid;
         private String name;
         @NotEmpty
         private String surname;
