@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.FIELD, ElementType.METHOD})
 public @interface RegexOID {
 
-    String message() default "Invalid OID";
+    String message() default "{Validator.user.oid}";
 
     Class<?>[] groups() default { };
 
