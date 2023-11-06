@@ -18,7 +18,7 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         User user = (User) target;
 
-        ValidationUtils.rejectIfEmpty(errors, "name", "NotEmpty.user.name");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty.user.name");
 
         // \\d value repeats the first [0-9] range
         if (!user.getOid().matches("[0-9]{2}[.][\\d]{3}-[A-Z]"))
