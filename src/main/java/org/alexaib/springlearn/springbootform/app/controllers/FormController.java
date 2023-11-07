@@ -30,7 +30,7 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(validator); // adds new validator to the Spring Web Validators stack
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(
+        binder.registerCustomEditor(Date.class, "birthDate", new CustomDateEditor(
                 // Init object via lambda
                 Optional.of(new SimpleDateFormat("yyyy-MM-dd")).map(f -> {
                     f.setLenient(false);
