@@ -31,8 +31,7 @@ public class User {
     private Date birthDate;
     @NotNull
     private Country country;
-    @NotEmpty
-    private List<String> roles;
+    private @NotEmpty List<Role> roles;
 
     public User(String idx, String name, String surname, String username, String password, String email) {
         this.idx = idx;
@@ -123,11 +122,11 @@ public class User {
         this.country = country;
     }
 
-    public List<String> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

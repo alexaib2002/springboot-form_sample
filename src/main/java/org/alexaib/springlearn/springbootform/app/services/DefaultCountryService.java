@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class DefaultCountryService implements ICountryService {
+public class DefaultCountryService implements IListItemService<Country> {
 
     private final List<Country> list;
 

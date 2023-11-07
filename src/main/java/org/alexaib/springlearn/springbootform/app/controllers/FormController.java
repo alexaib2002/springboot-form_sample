@@ -4,8 +4,9 @@ import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.editors.CapsNameEditor;
 import org.alexaib.springlearn.springbootform.app.editors.CountryPropertyEditor;
 import org.alexaib.springlearn.springbootform.app.model.Country;
+import org.alexaib.springlearn.springbootform.app.model.Role;
 import org.alexaib.springlearn.springbootform.app.model.User;
-import org.alexaib.springlearn.springbootform.app.services.ICountryService;
+import org.alexaib.springlearn.springbootform.app.services.IListItemService;
 import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -29,7 +30,10 @@ public class FormController {
     private UserValidator validator;
 
     @Autowired
-    private ICountryService countryService;
+    private IListItemService<Country> countryService;
+
+    @Autowired
+    private IListItemService<Role> rolesService;
 
     @Autowired
     private CountryPropertyEditor countryPropertyEditor;
@@ -50,12 +54,8 @@ public class FormController {
     }
 
     @ModelAttribute("roles")
-    public List<String> roles() {
-        return List.of(
-                "ROLE_ADMIN",
-                "ROLE_USER",
-                "ROLE_MODERATOR"
-        );
+    public List<Role> roles() {
+        return rolesService.list();
     }
 
     @ModelAttribute("countries")
