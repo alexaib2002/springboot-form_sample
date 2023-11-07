@@ -5,6 +5,7 @@ import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 import org.alexaib.springlearn.springbootform.app.validator.Required;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private String idx;
@@ -30,6 +31,8 @@ public class User {
     private Date birthDate;
     @NotNull
     private Country country;
+    @NotEmpty
+    private List<String> roles;
 
     public User(String idx, String name, String surname, String username, String password, String email) {
         this.idx = idx;
@@ -118,5 +121,13 @@ public class User {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

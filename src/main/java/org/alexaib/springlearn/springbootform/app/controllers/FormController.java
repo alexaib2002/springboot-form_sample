@@ -49,6 +49,15 @@ public class FormController {
         binder.registerCustomEditor(Country.class, "country", countryPropertyEditor);
     }
 
+    @ModelAttribute("roles")
+    public List<String> roles() {
+        return List.of(
+                "ROLE_ADMIN",
+                "ROLE_USER",
+                "ROLE_MODERATOR"
+        );
+    }
+
     @ModelAttribute("countries")
     public List<Country> countries() {
         return countryService.list();
