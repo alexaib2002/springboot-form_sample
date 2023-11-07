@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.editors.CapsNameEditor;
 import org.alexaib.springlearn.springbootform.app.model.Country;
 import org.alexaib.springlearn.springbootform.app.model.User;
+import org.alexaib.springlearn.springbootform.app.services.ICountryService;
 import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @SessionAttributes("user")
@@ -23,6 +26,9 @@ public class FormController {
 
     @Autowired
     private UserValidator validator;
+
+    @Autowired
+    private ICountryService countryService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -40,12 +46,7 @@ public class FormController {
 
     @ModelAttribute("countries")
     public List<Country> countries() {
-        return Arrays.asList(
-                new Country(1, "ES", "España"),
-                new Country(2, "MX","México"),
-                new Country(3, "CL","Chile"),
-                new Country(4, "AR","Argentina"),
-                new Country(5, "PE","Perú"));
+        return countryService.list();
     }
 
     @GetMapping("/form")
