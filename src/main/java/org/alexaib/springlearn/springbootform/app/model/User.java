@@ -5,13 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
+import org.alexaib.springlearn.springbootform.app.validator.Required;
 
 public class User {
         private String idx;
         @RegexOID
         private String oid;
         private String name;
-        @NotBlank
+        @Required
         private String surname;
         @NotBlank
         @Size(min = 3, max = 8)
