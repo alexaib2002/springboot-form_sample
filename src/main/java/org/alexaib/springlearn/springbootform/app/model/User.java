@@ -33,6 +33,8 @@ public class User {
     private Country country;
     private @NotEmpty List<Role> roles;
     private boolean enabled;
+    @NotEmpty
+    private String gender;
 
     public String getIdx() {
         return idx;
@@ -128,5 +130,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

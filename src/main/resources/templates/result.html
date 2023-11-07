@@ -17,6 +17,7 @@
     <li th:text="${user.email}"></li>
     <li th:text="${#dates.format(user.birthDate, 'dd/MM/yyyy')}"></li>
     <li th:text="'Enabled: ' + ${user.enabled}"></li>
+    <li th:text="'Gender: ' + ${user.gender}"></li>
 </ul>
 <div>Roles</div>
 <ul>

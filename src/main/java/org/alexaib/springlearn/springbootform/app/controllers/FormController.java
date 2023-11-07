@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,11 @@ public class FormController {
                 binder.registerCustomEditor(String.class, field, new CapsNameEditor()));
         binder.registerCustomEditor(Country.class, "country", countryPropertyEditor);
         binder.registerCustomEditor(Role.class, "roles", rolesPropertyEditor);
+    }
+
+    @ModelAttribute("genders")
+    public List<String> gender() {
+        return Arrays.asList("Masculine", "Feminine");
     }
 
     @ModelAttribute("roles")
