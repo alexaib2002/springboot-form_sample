@@ -13,6 +13,7 @@
     <li th:text="${user.username}"></li>
     <li th:text="${user.password}"></li>
     <li th:text="${user.email}"></li>
+    <li th:text="${#dates.format(user.birthDate, 'dd/MM/yyyy')}"></li>
 </ul>
 </body>
 </html>
