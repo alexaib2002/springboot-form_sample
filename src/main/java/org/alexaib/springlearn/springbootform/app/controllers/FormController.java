@@ -81,6 +81,7 @@ public class FormController {
         user.setName("John");
         user.setSurname("Doe");
         user.setEnabled(false);
+        user.setSecretValue("********");
         model.addAttribute("user", user);
 
         return "form";
