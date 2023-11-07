@@ -27,7 +27,6 @@ public class User {
         @Max(9999)
         private Integer account;
         @NotNull
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
         @Past
         private Date birthDate;
 

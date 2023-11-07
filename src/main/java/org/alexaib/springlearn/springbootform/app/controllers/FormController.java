@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.model.User;
 import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import javax.swing.text.html.Option;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @SessionAttributes("user")
@@ -24,6 +30,12 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(validator); // adds new validator to the Spring Web Validators stack
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(
+                // Init object via lambda
+                Optional.of(new SimpleDateFormat("yyyy-MM-dd")).map(f -> {
+                    f.setLenient(false);
+                    return f;
+                }).get(), false));
     }
 
     @GetMapping("/form")
