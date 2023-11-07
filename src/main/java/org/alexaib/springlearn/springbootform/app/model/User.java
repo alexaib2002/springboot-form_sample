@@ -1,9 +1,6 @@
 package org.alexaib.springlearn.springbootform.app.model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 import org.alexaib.springlearn.springbootform.app.validator.Required;
 
@@ -22,6 +19,10 @@ public class User {
         @NotEmpty
         @Email(message = "Email isn't formatted")
         private String email;
+        @NotNull
+        @Min(0)
+        @Max(9999)
+        private Integer account;
 
         public User(String idx, String name, String surname, String username, String password, String email) {
                 this.idx = idx;
@@ -86,5 +87,13 @@ public class User {
 
         public void setEmail(String email) {
                 this.email = email;
+        }
+
+        public Integer getAccount() {
+                return account;
+        }
+
+        public void setAccount(Integer account) {
+                this.account = account;
         }
 }
