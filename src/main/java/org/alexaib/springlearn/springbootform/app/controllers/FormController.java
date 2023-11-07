@@ -2,6 +2,7 @@ package org.alexaib.springlearn.springbootform.app.controllers;
 
 import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.editors.CapsNameEditor;
+import org.alexaib.springlearn.springbootform.app.model.Country;
 import org.alexaib.springlearn.springbootform.app.model.User;
 import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,18 +39,13 @@ public class FormController {
     }
 
     @ModelAttribute("countries")
-    public List<String> countries() {
-        return Arrays.asList("España", "México", "Chile", "Argentina", "Perú");
-    }
-
-    @ModelAttribute("countriesMap")
-    public Map<String, String> countriesMap() {
-        return new HashMap<>(Map.of(
-                "ES", "España",
-                "MX", "México",
-                "CL", "Chile",
-                "AR", "Argentina",
-                "PE", "Perú"));
+    public List<Country> countries() {
+        return Arrays.asList(
+                new Country(1, "ES", "España"),
+                new Country(2, "MX","México"),
+                new Country(3, "CL","Chile"),
+                new Country(4, "AR","Argentina"),
+                new Country(5, "PE","Perú"));
     }
 
     @GetMapping("/form")

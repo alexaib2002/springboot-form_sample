@@ -1,9 +1,9 @@
 package org.alexaib.springlearn.springbootform.app.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 import org.alexaib.springlearn.springbootform.app.validator.Required;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -29,8 +29,8 @@ public class User {
         @NotNull
         @Past
         private Date birthDate;
-        @NotEmpty
-        private String country;
+        @Valid
+        private Country country;
 
         public User(String idx, String name, String surname, String username, String password, String email) {
                 this.idx = idx;
@@ -113,11 +113,11 @@ public class User {
                 this.birthDate = birthDate;
         }
 
-        public String getCountry() {
+        public Country getCountry() {
                 return country;
         }
 
-        public void setCountry(String country) {
+        public void setCountry(Country country) {
                 this.country = country;
         }
 }
