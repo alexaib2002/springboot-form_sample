@@ -2,6 +2,7 @@ package org.alexaib.springlearn.springbootform.app.controllers;
 
 import jakarta.validation.Valid;
 import org.alexaib.springlearn.springbootform.app.editors.CapsNameEditor;
+import org.alexaib.springlearn.springbootform.app.editors.CountryPropertyEditor;
 import org.alexaib.springlearn.springbootform.app.model.Country;
 import org.alexaib.springlearn.springbootform.app.model.User;
 import org.alexaib.springlearn.springbootform.app.services.ICountryService;
@@ -30,6 +31,9 @@ public class FormController {
     @Autowired
     private ICountryService countryService;
 
+    @Autowired
+    private CountryPropertyEditor countryPropertyEditor;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.addValidators(validator); // adds new validator to the Spring Web Validators stack
@@ -42,6 +46,7 @@ public class FormController {
         // Apply CapsNameEditor editor for both name and surname fields
         List.of("name", "surname").forEach(field ->
                 binder.registerCustomEditor(String.class, field, new CapsNameEditor()));
+        binder.registerCustomEditor(Country.class, "country", countryPropertyEditor);
     }
 
     @ModelAttribute("countries")

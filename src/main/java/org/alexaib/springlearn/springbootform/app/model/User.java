@@ -1,6 +1,5 @@
 package org.alexaib.springlearn.springbootform.app.model;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 import org.alexaib.springlearn.springbootform.app.validator.Required;
@@ -29,7 +28,7 @@ public class User {
     @NotNull
     @Past
     private Date birthDate;
-    @Valid
+    @NotNull
     private Country country;
 
     public User(String idx, String name, String surname, String username, String password, String email) {
