@@ -32,15 +32,7 @@ public class User {
     @NotNull
     private Country country;
     private @NotEmpty List<Role> roles;
-
-    public User(String idx, String name, String surname, String username, String password, String email) {
-        this.idx = idx;
-        this.name = name;
-        this.surname = surname;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
+    private boolean enabled;
 
     public String getIdx() {
         return idx;
@@ -128,5 +120,13 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

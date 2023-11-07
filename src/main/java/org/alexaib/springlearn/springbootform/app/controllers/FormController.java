@@ -70,13 +70,12 @@ public class FormController {
 
     @GetMapping("/form")
     public String form(Model model) {
-        model.addAttribute("user", new User(
-                "14AB",
-                "John",
-                "Doe",
-                "",
-                "",
-                ""));
+        User user = new User();
+        user.setIdx("14AB");
+        user.setName("John");
+        user.setSurname("Doe");
+        user.setEnabled(false);
+        model.addAttribute("user", user);
 
         return "form";
     }

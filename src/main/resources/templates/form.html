@@ -8,6 +8,12 @@
 <!--th:object refers to the mapped th:field(s) of this template-->
 <form th:action="@{/form}" th:object="${user}" method="post">
     <div>
+        <label for="enabled">Enabled</label>
+        <div>
+            <input type="checkbox" id="enabled" th:field="*{enabled}">
+        </div>
+    </div>
+    <div>
         <label for="country">Country</label>
         <div>
             <select id="country" th:field="*{country}">
