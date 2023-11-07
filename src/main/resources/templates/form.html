@@ -57,6 +57,13 @@
         <div th:if="${#fields.hasErrors('account')}" th:errors="*{account}"></div>
     </div>
     <div>
+        <label for="birthDate">Birth Date</label>
+        <div>
+            <input type="date" id="birthDate" th:field="*{birthDate}" placeholder="yyyy/MM/dd">
+        </div>
+        <div th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></div>
+    </div>
+    <div>
         <input type="submit" value="Submit">
     </div>
 

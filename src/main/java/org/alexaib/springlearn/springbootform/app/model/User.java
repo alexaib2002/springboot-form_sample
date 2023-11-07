@@ -3,6 +3,9 @@ package org.alexaib.springlearn.springbootform.app.model;
 import jakarta.validation.constraints.*;
 import org.alexaib.springlearn.springbootform.app.validator.RegexOID;
 import org.alexaib.springlearn.springbootform.app.validator.Required;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class User {
         private String idx;
@@ -23,6 +26,10 @@ public class User {
         @Min(0)
         @Max(9999)
         private Integer account;
+        @NotNull
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @Past
+        private Date birthDate;
 
         public User(String idx, String name, String surname, String username, String password, String email) {
                 this.idx = idx;
@@ -95,5 +102,13 @@ public class User {
 
         public void setAccount(Integer account) {
                 this.account = account;
+        }
+
+        public Date getBirthDate() {
+                return birthDate;
+        }
+
+        public void setBirthDate(Date birthDate) {
+                this.birthDate = birthDate;
         }
 }
