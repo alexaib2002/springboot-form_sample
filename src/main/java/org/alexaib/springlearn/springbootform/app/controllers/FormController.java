@@ -1,6 +1,7 @@
 package org.alexaib.springlearn.springbootform.app.controllers;
 
 import jakarta.validation.Valid;
+import org.alexaib.springlearn.springbootform.app.editors.CapsNameEditor;
 import org.alexaib.springlearn.springbootform.app.model.User;
 import org.alexaib.springlearn.springbootform.app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import javax.swing.text.html.Option;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,6 +37,9 @@ public class FormController {
                     f.setLenient(false);
                     return f;
                 }).get(), false));
+        // Apply CapsNameEditor editor for both name and surname fields
+        List.of("name", "surname").forEach(field ->
+                binder.registerCustomEditor(String.class, field, new CapsNameEditor()));
     }
 
     @GetMapping("/form")
