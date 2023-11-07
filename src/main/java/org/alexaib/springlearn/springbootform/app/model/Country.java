@@ -1,8 +1,6 @@
 package org.alexaib.springlearn.springbootform.app.model;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 public class Country {
 
