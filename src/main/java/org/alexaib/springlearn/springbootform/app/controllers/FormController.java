@@ -10,13 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +40,11 @@ public class FormController {
                 binder.registerCustomEditor(String.class, field, new CapsNameEditor()));
     }
 
+    @ModelAttribute("countries")
+    public List<String> countries() {
+        return Arrays.asList("España", "México", "Chile", "Argentina", "Perú");
+    }
+
     @GetMapping("/form")
     public String form(Model model) {
         model.addAttribute("user", new User(
@@ -51,6 +54,7 @@ public class FormController {
                 "",
                 "",
                 ""));
+
         return "form";
     }
 

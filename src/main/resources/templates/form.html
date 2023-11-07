@@ -8,6 +8,16 @@
 <!--th:object refers to the mapped th:field(s) of this template-->
 <form th:action="@{/form}" th:object="${user}" method="post">
     <div>
+        <label for="country">Country</label>
+        <div>
+            <select id="country" th:field="*{country}">
+                <option value="">Select a country</option>
+                <option th:each="country: ${countries}" th:text="${country}" th:value="${country}"></option>
+            </select>
+        </div>
+        <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+    </div>
+    <div>
         <label for="oid">Other ID</label>
         <div>
             <input type="text" id="oid" th:field="*{oid}">

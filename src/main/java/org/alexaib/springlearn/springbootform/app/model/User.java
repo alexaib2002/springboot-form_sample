@@ -29,6 +29,8 @@ public class User {
         @NotNull
         @Past
         private Date birthDate;
+        @NotEmpty
+        private String country;
 
         public User(String idx, String name, String surname, String username, String password, String email) {
                 this.idx = idx;
@@ -109,5 +111,13 @@ public class User {
 
         public void setBirthDate(Date birthDate) {
                 this.birthDate = birthDate;
+        }
+
+        public String getCountry() {
+                return country;
+        }
+
+        public void setCountry(String country) {
+                this.country = country;
         }
 }
