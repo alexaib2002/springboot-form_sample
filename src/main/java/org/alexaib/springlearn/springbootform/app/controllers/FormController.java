@@ -90,19 +90,32 @@ public class FormController {
     }
 
     /**
+     *
+     * @param user User fetched from HTTP session via SessionAttribute
+     * @param model MVC view
+     * @param status HTTP session controller
+     * @return Result view
+     */
+    @GetMapping("result")
+    public String result(@SessionAttribute(name = "user", required = false) User user, Model model, SessionStatus status) {
+        if (user == null)
+            return "redirect:/form";
+        status.setComplete();
+        model.addAttribute("user", user);
+        return "result";
+    }
+
+    /**
      * @param user   Validated java object
      * @param result Must be after the validated object
-     * @param model  MVC view
      * @return Result webpage
      */
     @PostMapping("/form")
-    public String processForm(@Valid User user, BindingResult result, Model model, SessionStatus status) {
+    public String processForm(@Valid User user, BindingResult result) {
 //        validator.validate(user, result); // explicit validation
         if (result.hasErrors())
             return "form";
-        model.addAttribute("user", user);
-        status.setComplete();
-        return "result";
+        return "redirect:/result";
     }
 
 }
