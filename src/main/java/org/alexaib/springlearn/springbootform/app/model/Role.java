@@ -1,5 +1,7 @@
 package org.alexaib.springlearn.springbootform.app.model;
 
+import java.util.Objects;
+
 public class Role {
 
     private int id;
@@ -38,4 +40,18 @@ public class Role {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role1 = (Role) o;
+        return id == role1.id && Objects.equals(name, role1.name) && Objects.equals(role, role1.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, role);
+    }
+
 }

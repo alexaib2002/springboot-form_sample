@@ -82,6 +82,8 @@ public class FormController {
         user.setSurname("Doe");
         user.setEnabled(false);
         user.setSecretValue("********");
+        user.setCountry(countryService.getById(1)); // set default country
+        user.setRoles(Arrays.asList(rolesService.getById(2))); // set default role
         model.addAttribute("user", user);
 
         return "form";
