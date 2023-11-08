@@ -7,9 +7,7 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-<div class="alert alert-success">
-    <span th:text="'Passed time: ' + ${passedTime} + ' ms'"></span>
-</div>
+<section th:replace="components/passed-time :: passed-time"></section>
 <!--th:object refers to the mapped th:field(s) of this template-->
 <div class="container">
     <h1 class="h1">Thymeleaf + Spring form</h1>

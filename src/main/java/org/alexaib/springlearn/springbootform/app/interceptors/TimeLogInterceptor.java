@@ -20,25 +20,28 @@ public class TimeLogInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("Entering preHandle()");
         logger.info(String.format("Intercepting %s", handler));
+        if (request.getMethod().equalsIgnoreCase("post"))
+            return true;
         if (handler instanceof HandlerMethod)
             logger.info(String.format("Is method of controller %s", handler));
+
         long startTime = System.currentTimeMillis();
         request.setAttribute("startTime", startTime);
 
         Thread.sleep(new Random().nextInt(500));
-
-
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        if (request.getMethod().equalsIgnoreCase("post"))
+            return;
+
         long endTime = System.currentTimeMillis();
         long passedTime = endTime - (long) request.getAttribute("startTime");
 
         if (handler instanceof HandlerMethod && modelAndView != null)
             modelAndView.addObject("passedTime", passedTime);
-
         logger.info(String.format("Passed time %d ms", passedTime));
         logger.info("Exiting postHandle()");
         HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);

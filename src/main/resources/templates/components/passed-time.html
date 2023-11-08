@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+<section th:fragment="passed-time">
+    <div class="alert alert-success">
+        <span th:text="'Passed time: ' + ${passedTime} + ' ms'"></span>
+    </div>
+</section>
+</body>
+</html>

@@ -7,9 +7,7 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-<div class="alert alert-success">
-    <span th:text="'Passed time: ' + ${passedTime}"></span>
-</div>
+<section th:replace="components/passed-time :: passed-time"></section>
 <div class="container">
     <a class="btn btn-success my-3" th:href="@{/form}">Return to form</a>
     <ul class="list-group my-3">
